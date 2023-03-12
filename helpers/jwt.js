@@ -6,20 +6,17 @@ function authJwt() {
   return expressJwt({
     secret,
     algorithms: ['HS256'],
-    // isRevoked: isRevoked,
+    //isRevoked: isRevoked,
   }).unless({
     path: [
       { url: /\/public\/uploads(.*)/, methods: ['GET', 'OPTIONS'] },
-      { url: /\/api\/v1\/doctor(.*)/, methods: ['GET', 'OPTIONS'] },
-      { url: /\/api\/v1\/categories(.*)/, methods: ['GET', 'OPTIONS'] },
+      { url: /\/api\/v1\/products(.*)/, methods: ['GET', 'OPTIONS', 'POST'] },
+      { url: /\/api\/v1\/categories(.*)/, methods: ['GET', 'OPTIONS', 'POST'] },
       { url: /\/api\/v1\/admin(.*)/, methods: ['GET', 'OPTIONS', 'POST'] },
       { url: /\/api\/v1\/banners(.*)/, methods: ['GET', 'OPTIONS', 'POST'] },
-      // { url: /\/api\/v1\/notifications(.*)/, methods: ['GET', 'OPTIONS', 'POST'] },
-      {
-        url: /\/api\/v1\/appointments(.*)/,
-        methods: ['GET', 'OPTIONS', 'POST'],
-      },
-
+      { url: /\/api\/v1\/orders(.*)/, methods: ['GET', 'OPTIONS', 'POST'] },
+      { url: /\/api\/v1\/users(.*)/, methods: ['GET', 'OPTIONS', 'POST'] },
+      { url: /\/api\/v1\/coupons(.*)/, methods: ['GET', 'OPTIONS', 'POST'] },
       `${api}/users/login`,
       `${api}/users/register`,
     ],
@@ -27,7 +24,7 @@ function authJwt() {
 }
 
 async function isRevoked(req, payload, done) {
-  if (!payload.isAdmin || !payload.isDoctor) {
+  if (!payload.isAdmin) {
     done(null, true);
   }
 
