@@ -18,10 +18,7 @@ const userSchema = mongoose.Schema(
       type: String,
       default: '',
     },
-    isDoctor: {
-      type: Boolean,
-      default: false,
-    },
+
     isAdmin: {
       type: Boolean,
       default: false,
@@ -34,23 +31,11 @@ const userSchema = mongoose.Schema(
       type: Array,
       default: [],
     },
-    dateCreated: {
-      type: Date,
-      default: Date.now,
-    },
   },
   {
     timestamps: true,
   }
 );
-
-/// Changing or create a new id instead _id
-userSchema.virtual('id').get(function () {
-  return this._id.toHexString();
-});
-userSchema.set('toJSON', {
-  virtuals: true,
-});
 
 exports.User = mongoose.model('User', userSchema);
 exports.userSchema = userSchema;

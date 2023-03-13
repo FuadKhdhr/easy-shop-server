@@ -1,6 +1,10 @@
-
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+<<<<<<< HEAD
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+=======
+>>>>>>> 7064ac9174a38ba8c7891dd26f022578b5180d7e
 # dependencies
 /node_modules
 /.pnp
@@ -21,4 +25,8 @@
 
 npm-debug.log*
 yarn-debug.log*
+<<<<<<< HEAD
 yarn-error.log*
+=======
+yarn-error.log*
+>>>>>>> 7064ac9174a38ba8c7891dd26f022578b5180d7e

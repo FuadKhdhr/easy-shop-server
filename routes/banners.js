@@ -87,7 +87,7 @@ router.put('/:id', uploadOptions.single('image'), async (req, res) => {
   if (!updatedBanner)
     return res.status(500).send('the banner cannot be updated!');
 
-  res.send(updatedBanner);
+  res.status(200).send(updatedBanner);
 });
 
 router.delete('/:id', (req, res) => {
